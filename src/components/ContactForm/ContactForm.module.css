@@ -1,0 +1,19 @@
+.form {
+  width: 300px;
+  margin-bottom: 24px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 8px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+.button {
+  display: block;
+  margin: 0 auto;
+}
+.errorMessage {
+  color: red;
+}
