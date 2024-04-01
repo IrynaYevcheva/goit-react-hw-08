@@ -1,0 +1,14 @@
+.link {
+  color: black;
+  text-decoration: none;
+}
+.active {
+  color: red;
+}
+.div {
+  margin-left: auto;
+}
+.list {
+  display: flex;
+  column-gap: 16px;
+}
