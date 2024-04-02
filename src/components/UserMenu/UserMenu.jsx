@@ -24,10 +24,8 @@ export default function UserMenu() {
 
   return (
     <>
-      <p className={css.text}>Welcome, {user.name}</p>
-      <button className={css.button} onClick={logingOut}>
-        LogOut
-      </button>
+      <p>Welcome, {user.name}</p>
+      <button onClick={logingOut}>Log Out</button>
     </>
   );
 }

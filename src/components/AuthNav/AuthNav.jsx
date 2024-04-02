@@ -12,12 +12,12 @@ export default function AuthNav() {
       <ul className={styles.list}>
         <li>
           <NavLink to="/login" className={linkClass}>
-            Login
+            Log In
           </NavLink>
         </li>
         <li>
           <NavLink to="/register" className={linkClass}>
-            Registration
+            Sign Up
           </NavLink>
         </li>
       </ul>

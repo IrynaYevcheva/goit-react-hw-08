@@ -4,7 +4,7 @@ import { AppBar } from '../App.Bar/AppBar';
 import { Loader } from '../Loader/Loader';
 import { Toaster } from 'react-hot-toast';
 
-export const Layout = () => {
+export default function Layout() {
   return (
     <>
       <AppBar />
@@ -14,4 +14,4 @@ export const Layout = () => {
       </Suspense>
     </>
   );
-};
+}

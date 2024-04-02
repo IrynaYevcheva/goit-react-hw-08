@@ -24,7 +24,7 @@ const initialValues = {
   id: '',
 };
 
-export const ContactForm = () => {
+export default function ContactForm() {
   const nameFieldId = useId();
   const numberFieldId = useId();
   const dispatch = useDispatch();
@@ -70,4 +70,4 @@ export const ContactForm = () => {
       </Form>
     </Formik>
   );
-};
+}

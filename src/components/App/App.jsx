@@ -1,33 +1,3 @@
-// import styles from './App.module.css';
-// import { ContactList } from '../ContactList/ContactList';
-// import { SearchBox } from '../SearchBox/SearchBox';
-// import { ContactForm } from '../ContactForm/ContactForm';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { fetchContacts } from '../../redux/contacts/operations';
-// import { selectLoading, selectError } from '../../redux/contacts/slice';
-// import { Loader } from '../Loader/Loader';
-
-// export default function App() {
-//   const dispatch = useDispatch();
-//   const loading = useSelector(selectLoading);
-//   const error = useSelector(selectError);
-
-//   useEffect(() => {
-//     dispatch(fetchContacts());
-//   }, [dispatch]);
-
-//   return (
-//     <div className={styles.wrapper}>
-//       <h1 className={styles.title}>Phonebook</h1>
-//       <ContactForm />
-//       <SearchBox />
-//       <ContactList />
-//       {loading && !error && <Loader />}
-//     </div>
-//   );
-// }
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -36,9 +6,17 @@ import { Layout } from '../Layout/Layout';
 import { refreshUser } from '../../redux/auth/operations';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
 import { RestrictedRoute } from '../RestrictedRoute/RestrictedRoute';
+import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 
-const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
+const HomePage = lazy(() => import('../../pages/Home/Home'));
+const LoginPage = lazy(() => import('../../pages/Login/Login'));
+const RegistrationPage = lazy(() =>
+  import('../../pages/Registration/Registration')
+);
+const ContactsPage = lazy(() => import('../../pages/Contacts/Contacts'));
+const NotFoundPage = lazy(() =>
+  import('../../pages/NotFoundPage/NotFoundPage')
+);
 
 export default function App() {
   const dispatch = useDispatch();
@@ -54,11 +32,27 @@ export default function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+        <Route
           path="/login"
           element={
             <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }
         />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegistrationPage />}
+            />
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
