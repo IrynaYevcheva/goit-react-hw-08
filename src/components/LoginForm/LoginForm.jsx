@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import styles from './LoginForm.module.css';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -43,20 +44,26 @@ export default function LoginForm() {
   const passwordFieldId = useId();
   return (
     <>
-      <h2>Log In</h2>
+      <h2 className={styles.title}>Log In</h2>
       <Formik
         initialValues={loggedUser}
         onSubmit={handleSubmit}
         validationSchema={LoginSchema}
       >
-        <Form>
-          <label htmlFor={emailFieldId}>Email</label>
-          <Field type="text" name="email" id={emailFieldId}></Field>
-          <ErrorMessage name="email" as="span" />
-          <label htmlFor={passwordFieldId}>Password</label>
-          <Field type="text" name="password" id={passwordFieldId}></Field>
-          <ErrorMessage name="password" as="span" />
-          <button type="submit">Log In</button>
+        <Form className={styles.form}>
+          <div className={styles.formItem}>
+            <label htmlFor={emailFieldId}>Email</label>
+            <Field type="text" name="email" id={emailFieldId}></Field>
+            <ErrorMessage name="email" as="span" />
+          </div>
+          <div className={styles.formItem}>
+            <label htmlFor={passwordFieldId}>Password</label>
+            <Field type="text" name="password" id={passwordFieldId}></Field>
+            <ErrorMessage name="password" as="span" />
+          </div>
+          <button className={styles.button} type="submit">
+            Log In
+          </button>
         </Form>
       </Formik>
       <p>

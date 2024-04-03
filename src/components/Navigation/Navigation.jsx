@@ -11,7 +11,7 @@ const linkClass = ({ isActive }) => {
 export default function Navigation() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <>
+    <div>
       <nav className={styles.nav}>
         <ul className={styles.list}>
           <li>
@@ -28,6 +28,6 @@ export default function Navigation() {
           )}
         </ul>
       </nav>
-    </>
+    </div>
   );
 }

@@ -1,0 +1,5 @@
+.div {
+  margin-left: auto;
+  display: flex;
+  column-gap: 16px;
+}

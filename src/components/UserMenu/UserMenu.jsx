@@ -3,6 +3,7 @@ import { selectUser } from '../../redux/auth/selectors';
 import { logout } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import styles from './UserMenu.module.css';
 
 export default function UserMenu() {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export default function UserMenu() {
 
   const user = useSelector(selectUser);
 
-  const logingOut = () => {
+  const logOut = () => {
     dispatch(logout())
       .unwrap()
       .then(() => {
@@ -23,9 +24,9 @@ export default function UserMenu() {
   };
 
   return (
-    <>
+    <div className={styles.div}>
       <p>Welcome, {user.name}</p>
-      <button onClick={logingOut}>Log Out</button>
-    </>
+      <button onClick={logOut}>Log Out</button>
+    </div>
   );
 }

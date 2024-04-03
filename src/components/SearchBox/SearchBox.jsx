@@ -1,6 +1,6 @@
-import style from './SearchBox.module.css';
 import { useId } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './SearchBox.module.css';
 import {
   changeNameFilter,
   changeNumberFilter,
@@ -23,11 +23,12 @@ export default function SearchBox() {
     dispatch(changeNumberFilter(e.target.value));
   };
   return (
-    <div className={css.container}>
-      <ul className={css.list}>
-        <li className={css.item}>
-          <label htmlFor={nameId}>Find contacts by name</label>
+    <div className={styles.box}>
+      <ul>
+        <li>
+          <label htmlFor={nameId}>Search by name</label>
           <input
+            className={styles.input}
             onChange={handleNameChange}
             value={nameFilter}
             name="search"
@@ -35,9 +36,10 @@ export default function SearchBox() {
             id={nameId}
           />
         </li>
-        <li className={css.item}>
-          <label htmlFor={numberId}>Find contacts by number</label>
+        <li>
+          <label htmlFor={numberId}>Search by number</label>
           <input
+            className={styles.input}
             onChange={handleNumberChange}
             value={numberFilter}
             name="search"

@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Loader } from '../Loader/Loader';
-import { Layout } from '../Layout/Layout';
+import Loader from '../Loader/Loader';
+import Layout from '../Layout/Layout';
 import { refreshUser } from '../../redux/auth/operations';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
-import { RestrictedRoute } from '../RestrictedRoute/RestrictedRoute';
-import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
+import RestrictedRoute from '../RestrictedRoute/RestrictedRoute';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const HomePage = lazy(() => import('../../pages/Home/Home'));
 const LoginPage = lazy(() => import('../../pages/Login/Login'));

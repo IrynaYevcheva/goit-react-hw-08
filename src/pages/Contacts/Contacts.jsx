@@ -19,8 +19,8 @@ export default function ContactsPage() {
     <div>
       <ContactForm />
       <SearchBox />
-      {loading && !error && <Loader />}
       <ContactList />
+      {loading && !error && <Loader />}
     </div>
   );
 }

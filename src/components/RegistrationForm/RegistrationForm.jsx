@@ -6,6 +6,7 @@ import { register } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import styles from './RegistrationForm.module.css';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -50,23 +51,31 @@ export default function RegisterForm() {
   const passwordFieldId = useId();
   return (
     <>
-      <h2>Sign Up</h2>
+      <h2 className={styles.title}>Sign Up</h2>
       <Formik
         initialValues={registeredUser}
         onSubmit={handleSubmit}
         validationSchema={RegisterSchema}
       >
-        <Form>
-          <label htmlFor={nameFieldId}>Username</label>
-          <Field type="text" name="name" id={nameFieldId}></Field>
-          <ErrorMessage name="name" as="span" />
-          <label htmlFor={emailFieldId}>Email</label>
-          <Field type="text" name="email" id={emailFieldId}></Field>
-          <ErrorMessage name="email" as="span" />
-          <label htmlFor={passwordFieldId}>Password</label>
-          <Field type="text" name="password" id={passwordFieldId}></Field>
-          <ErrorMessage name="password" as="span" />
-          <button type="submit">Sign Up</button>
+        <Form className={styles.form}>
+          <div className={styles.formItem}>
+            <label htmlFor={nameFieldId}>Username</label>
+            <Field type="text" name="name" id={nameFieldId}></Field>
+            <ErrorMessage name="name" as="span" />
+          </div>
+          <div className={styles.formItem}>
+            <label htmlFor={emailFieldId}>Email</label>
+            <Field type="text" name="email" id={emailFieldId}></Field>
+            <ErrorMessage name="email" as="span" />
+          </div>
+          <div className={styles.formItem}>
+            <label htmlFor={passwordFieldId}>Password</label>
+            <Field type="text" name="password" id={passwordFieldId}></Field>
+            <ErrorMessage name="password" as="span" />
+          </div>
+          <button className={styles.button} type="submit">
+            Sign Up
+          </button>
         </Form>
       </Formik>
       <p>
